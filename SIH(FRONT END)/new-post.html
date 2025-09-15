@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Disaster | Coast Guardian</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Mapbox for location selection -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <nav class="main-nav">
+            <div class="nav-left">
+                <a href="home.html" class="nav-logo">
+                    <h1>DAS</h1>
+                </a>
+                <div class="search-box">
+                    <input type="text" placeholder="Search disasters, locations, users...">
+                    <button class="search-btn">🔍</button>
+                </div>
+            </div>
+            <div class="nav-right">
+                <a href="notifications.html" class="nav-btn">🔔</a>
+                <div class="user-menu">
+                    <div class="user-profile" id="profileMenuBtn">
+                        <img src="images/default-avatar.png" alt="User" id="userAvatar">
+                    </div>
+                    <div class="dropdown-menu hidden" id="profileDropdown">
+                        <a href="profile.html">My Profile</a>
+                        <a href="settings.html">Settings</a>
+                        <a href="#" id="logoutBtn">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="content-container">
+            <div class="page-header">
+                <h1>Report a Disaster</h1>
+                <p>Share critical information to help others stay safe</p>
+            </div>
+
+            <div class="form-container">
+                <form id="disasterReportForm" class="disaster-form">
+                    <div class="form-section">
+                        <h2>Disaster Details</h2>
+                        
+                        <div class="form-group">
+                            <label for="disasterType">Type of Disaster*</label>
+                            <select id="disasterType" name="disasterType" required>
+                                <option value="" disabled selected>Select disaster type</option>
+                                <option value="flood">Flood</option>
+                                <option value="earthquake">Earthquake</option>
+                                <option value="fire">Fire</option>
+                                <option value="landslide">Landslide</option>
+                                <option value="cyclone">Cyclone</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div class="error-message" id="disasterTypeError"></div>
+                        </div>
+                        
+                        <div class="form-group other-disaster hidden" id="otherDisasterGroup">
+                            <label for="otherDisaster">Specify Disaster Type*</label>
+                            <input type="text" id="otherDisaster" name="otherDisaster" placeholder="E.g., Tsunami, Drought">
+                            <div class="error-message" id="otherDisasterError"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="disasterTitle">Title*</label>
+                            <input type="text" id="disasterTitle" name="disasterTitle" placeholder="Brief description of the disaster" required>
+                            <div class="error-message" id="disasterTitleError"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="disasterDescription">Detailed Description*</label>
+                            <textarea id="disasterDescription" name="disasterDescription" rows="5" placeholder="Provide details about the disaster, its impact, and any other relevant information" required></textarea>
+                            <div class="error-message" id="disasterDescriptionError"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h2>Location Information</h2>
+                        
+                        <div class="form-group">
+                            <label for="disasterLocation">Location*</label>
+                            <input type="text" id="disasterLocation" name="disasterLocation" placeholder="City, District, State" required>
+                            <div class="error-message" id="disasterLocationError"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Pin Location on Map</label>
+                            <div id="locationMap" class="location-map"></div>
+                            <div class="map-controls">
+                                <button type="button" id="useCurrentLocation">Use My Current Location</button>
+                            </div>
+                            <div class="coordinates-display">
+                                <span>Coordinates: </span>
+                                <span id="coordinatesValue">Not selected</span>
+                                <input type="hidden" id="latitude" name="latitude">
+                                <input type="hidden" id="longitude" name="longitude">
+                            </div>
+                            <div class="error-message" id="coordinatesError"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h2>Media Upload</h2>
+                        
+                        <div class="form-group">
+                            <label for="disasterPhotos">Upload Photos/Videos</label>
+                            <input type="file" id="disasterPhotos" name="disasterPhotos" accept="image/*,video/*" multiple>
+                            <div class="file-upload-info">Max. 5 files, 10MB each</div>
+                            <div class="media-preview" id="mediaPreview"></div>
+                            <div class="error-message" id="disasterPhotosError"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h2>Additional Information</h2>
+                        
+                        <div class="form-group">
+                            <label for="severityLevel">Severity Level*</label>
+                            <select id="severityLevel" name="severityLevel" required>
+                                <option value="" disabled selected>Select severity</option>
+                                <option value="low">Low - Minor damage</option>
+                                <option value="medium">Medium - Significant damage</option>
+                                <option value="high">High - Severe damage</option>
+                                <option value="critical">Critical - Life-threatening</option>
+                            </select>
+                            <div class="error-message" id="severityLevelError"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="peopleAffected">Estimated People Affected</label>
+                            <input type="number" id="peopleAffected" name="peopleAffected" min="0" placeholder="Approximate number">
+                            <div class="error-message" id="peopleAffectedError"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="checkbox-container">
+                                <input type="checkbox" id="needsAssistance" name="needsAssistance">
+                                <label for="needsAssistance" class="checkbox-label">Immediate assistance needed</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="additionalInfo">Additional Information</label>
+                            <textarea id="additionalInfo" name="additionalInfo" rows="3" placeholder="Any other details that might be helpful"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <div class="checkbox-container terms-checkbox">
+                            <input type="checkbox" id="confirmInfo" name="confirmInfo" required>
+                            <label for="confirmInfo" class="checkbox-label">I confirm that this information is accurate to the best of my knowledge</label>
+                            <div class="error-message" id="confirmInfoError"></div>
+                        </div>
+                        
+                        <div class="button-row">
+                            <button type="button" class="secondary-button" id="cancelReport">Cancel</button>
+                            <button type="submit" class="primary-button">Submit Report</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+        
+        <footer class="main-footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Coast Guardian</h3>
+                    <p>A community-driven platform for real-time disaster reporting and verification.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="pages/reports.html">Disaster Reports</a></li>
+                        <li><a href="pages/info/about.html">About Us</a></li>
+                        <li><a href="pages/info/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Coast Guardian. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="js/auth-service.js"></script>
+    <script src="js/post-service.js"></script>
+    <script src="js/dark-mode.js"></script>
+    <script src="js/new-post.js"></script>
+</body>
+</html>

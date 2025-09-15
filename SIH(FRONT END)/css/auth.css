@@ -1,0 +1,236 @@
+/* Authentication pages styling */
+
+.auth-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: var(--spacing-xl);
+}
+
+.auth-header {
+    padding: var(--spacing-xl);
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.auth-header h2 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-color);
+    font-weight: 600;
+    letter-spacing: -0.3px;
+}
+
+.auth-header p {
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+/* Login and Register Options */
+.login-options,
+.register-options {
+    padding: var(--spacing-lg);
+}
+
+.login-option,
+.register-option {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.login-option:hover,
+.register-option:hover {
+    border-color: var(--primary-light);
+    background-color: rgba(21, 101, 192, 0.03);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.option-icon {
+    font-size: 1.8rem;
+    margin-right: var(--spacing-md);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-color);
+    border-radius: 50%;
+}
+
+.option-content {
+    flex-grow: 1;
+}
+
+.option-content h3 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-color);
+}
+
+.option-content p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.option-arrow {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+/* Form Container */
+.login-form-container,
+.register-form-container {
+    padding: var(--spacing-lg);
+}
+
+.login-form-header,
+.register-form-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    margin-right: var(--spacing-md);
+}
+
+.login-form-header h3,
+.register-form-header h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--text-color);
+}
+
+/* Auth Form */
+.auth-form {
+    margin-bottom: var(--spacing-lg);
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.checkbox-container input[type="checkbox"] {
+    width: auto;
+    margin-right: var(--spacing-sm);
+}
+
+.checkbox-label {
+    font-size: 0.9rem;
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+.forgot-password {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    float: right;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.auth-button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.auth-button:hover {
+    background-color: var(--primary-dark);
+}
+
+.auth-footer {
+    text-align: center;
+    padding: var(--spacing-md) 0;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+}
+
+.auth-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Success Message */
+.auth-success {
+    text-align: center;
+    padding: var(--spacing-xl);
+}
+
+.success-icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--success-color);
+    color: white;
+    font-size: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-lg);
+}
+
+.auth-success h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-color);
+}
+
+.auth-success p {
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-color);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .option-icon {
+        font-size: 1.5rem;
+        width: 36px;
+        height: 36px;
+    }
+    
+    .option-content h3 {
+        font-size: 1rem;
+    }
+    
+    .option-content p {
+        font-size: 0.8rem;
+    }
+}

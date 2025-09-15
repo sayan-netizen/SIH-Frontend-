@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Report | Coast Guardian</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <div class="header-container">
+                <div class="logo-section">
+                    <div class="logo">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="brand-info">
+                        <h1>COAST GAURDIAN</h1>
+                        <p class="subtitle">Community Disaster Reporting</p>
+                    </div>
+                </div>
+                
+                <nav class="main-nav">
+                    <ul class="nav-links">
+                        <li><a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="pages/reports.html" class="nav-link"><i class="fas fa-list"></i> Reports</a></li>
+                        <li><a href="pages/live-disasters.html" class="nav-link"><i class="fas fa-broadcast-tower"></i> Live Disasters</a></li>
+                        <li><a href="pages/info/about.html" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
+                        <li><a href="pages/info/contact.html" class="nav-link"><i class="fas fa-phone"></i> Contact</a></li>
+                    </ul>
+                    
+                    <div class="auth-buttons">
+                        <a href="pages/auth/login.html" class="btn-secondary">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </a>
+                        <a href="pages/auth/register.html" class="btn-primary">
+                            <i class="fas fa-user-plus"></i> Register
+                        </a>
+                    </div>
+                    
+                    <!-- Mobile menu toggle -->
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </nav>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Your existing form content goes here -->
+            <section class="report-section">
+                <div class="report-form-container">
+                    <h2>Report a Disaster</h2>
+                    
+                    <!-- Your existing form -->
+                    <form id="reportForm" class="report-form">
+                        <!-- Add your existing form fields here -->
+                        <div class="form-group">
+                            <label for="name">Your Name <span class="required">*</span></label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="location">Location <span class="required">*</span></label>
+                            <div class="location-input-container">
+                                <input type="text" id="location" name="location" required placeholder="Enter location or click GPS button">
+                                <button type="button" id="getCurrentLocation" class="location-btn" title="Get current location">
+                                    <i class="fas fa-location-arrow"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="disasterType">Disaster Type <span class="required">*</span></label>
+                            <select id="disasterType" name="disasterType" required>
+                                <option value="">Select disaster type</option>
+                                <option value="earthquake">Earthquake</option>
+                                <option value="flood">Flood</option>
+                                <option value="fire">Fire</option>
+                                <option value="cyclone">Cyclone</option>
+                                <option value="landslide">Landslide</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description">Description <span class="required">*</span></label>
+                            <textarea id="description" name="description" rows="4" placeholder="Provide detailed information about the disaster..." required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="photo">Upload Photos <span class="required">*</span></label>
+                            <div class="upload-photo-container">
+                                <div class="upload-preview" id="photoPreviewContainer">
+                                    <div class="upload-placeholder" id="uploadPlaceholder">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <p>Drag photos here or click to upload</p>
+                                        <span class="upload-hint">Supported formats: JPG, PNG, WEBP (max 5MB) - <strong>At least 1 photo required</strong></span>
+                                    </div>
+                                    <div class="photo-preview-grid" id="photoPreviewGrid"></div>
+                                </div>
+                                
+                                <div class="upload-actions">
+                                    <label for="photoUpload" class="upload-btn primary-button">
+                                        <i class="fas fa-camera"></i> Select Photos
+                                    </label>
+                                    <input type="file" id="photoUpload" multiple accept="image/jpeg, image/png, image/webp" class="hidden" required>
+                                    <span class="selected-count" id="selectedPhotoCount"></span>
+                                </div>
+                                
+                                <div class="upload-progress-container hidden" id="uploadProgressContainer">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" id="uploadProgressBar"></div>
+                                    </div>
+                                    <div class="progress-text" id="uploadProgressText">Uploading photos...</div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-camera"></i> Upload Photos Required
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <!-- Success message -->
+                    <div class="success-message hidden" id="successMessage">
+                        <div class="success-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3>Report Submitted Successfully!</h3>
+                        <p>Thank you for reporting this disaster. Your report has been received and will be reviewed by our team.</p>
+                        <div class="success-actions">
+                            <button type="button" class="action-btn" id="submitAnotherBtn">Submit Another Report</button>
+                            <a href="pages/reports.html" class="view-reports-link">View All Reports</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="js/data-service.js"></script>
+    <script src="js/gps-location.js"></script>
+    <script src="js/dark-mode.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

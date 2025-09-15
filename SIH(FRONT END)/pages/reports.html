@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports | Coast Guardian</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dark-mode.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="brand-info">
+                    <h1>COAST GAURDIAN</h1>
+                    <p class="subtitle">Community Disaster Reporting</p>
+                </div>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="reports.html" class="nav-link active"><i class="fas fa-list"></i> Reports</a></li>
+                    <li><a href="live-disasters.html" class="nav-link"><i class="fas fa-broadcast-tower"></i> Live Disasters</a></li>
+                    <li><a href="info/about.html" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="info/contact.html" class="nav-link"><i class="fas fa-phone"></i> Contact</a></li>
+                </ul>
+                
+                <div class="auth-buttons">
+                    <a href="auth/login.html" class="btn-secondary">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <a href="auth/register.html" class="btn-primary">
+                        <i class="fas fa-user-plus"></i> Register
+                    </a>
+                </div>
+                
+                <!-- Mobile menu toggle -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <main class="main-content">
+            <section class="reports-section">
+                <div class="reports-header">
+                    <h2>Disaster Reports</h2>
+                    <p class="reports-subtitle">View and manage community disaster reports</p>
+                </div>
+                
+                <div class="reports-filters">
+                    <div class="filter-group">
+                        <label for="statusFilter">Filter by Status:</label>
+                        <select id="statusFilter">
+                            <option value="all">All Reports</option>
+                            <option value="pending">Pending</option>
+                            <option value="verified">Verified</option>
+                            <option value="resolved">Resolved</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="typeFilter">Filter by Type:</label>
+                        <select id="typeFilter">
+                            <option value="all">All Types</option>
+                            <option value="earthquake">Earthquake</option>
+                            <option value="flood">Flood</option>
+                            <option value="fire">Fire</option>
+                            <option value="cyclone">Cyclone</option>
+                            <option value="landslide">Landslide</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <button class="refresh-btn" onclick="loadReports()">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                </div>
+                
+                <div class="reports-container" id="reportsContainer">
+                    <!-- Reports will be loaded here -->
+                    <div class="loading-message">
+                        <i class="fas fa-spinner fa-spin"></i> Loading reports...
+                    </div>
+                </div>
+                
+                <div class="no-reports hidden" id="noReports">
+                    <i class="fas fa-inbox"></i>
+                    <h3>No Reports Found</h3>
+                    <p>There are currently no disaster reports to display.</p>
+                    <a href="../index.html" class="btn-primary">Submit a Report</a>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="../js/data-service.js"></script>
+    <script src="../js/reports.js"></script>
+    <script src="../js/dark-mode.js"></script>
+    <script src="../js/navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Coast Guardian</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="brand-info">
+                    <h1>COAST GAURDIAN</h1>
+                    <p class="subtitle">Community Disaster Reporting</p>
+                </div>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="pages/reports.html" class="nav-link"><i class="fas fa-list"></i> Reports</a></li>
+                    <li><a href="pages/live-disasters.html" class="nav-link"><i class="fas fa-broadcast-tower"></i> Live Disasters</a></li>
+                    <li><a href="pages/info/about.html" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="pages/info/contact.html" class="nav-link"><i class="fas fa-phone"></i> Contact</a></li>
+                </ul>
+                
+                <div class="auth-buttons">
+                    <a href="pages/auth/login.html" class="btn-secondary">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <a href="pages/auth/register.html" class="btn-primary">
+                        <i class="fas fa-user-plus"></i> Register
+                    </a>
+                </div>
+                
+                <!-- Mobile menu toggle -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <main class="main-content">
+            <!-- Left Sidebar -->
+            <div class="sidebar left-sidebar">
+                <div class="sidebar-section">
+                    <h3>Menu</h3>
+                    <ul class="sidebar-menu">
+                        <li><a href="home.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="explore.html"><i class="fas fa-globe"></i> Explore</a></li>
+                        <li><a href="pages/reports.html"><i class="fas fa-clipboard-list"></i> Reports</a></li>
+                        <li><a href="alerts.html"><i class="fas fa-exclamation-triangle"></i> Alerts</a></li>
+                        <li class="official-only hidden"><a href="verification.html"><i class="fas fa-check-circle"></i> Verify Reports</a></li>
+                        <li class="admin-only hidden"><a href="admin-dashboard.html"><i class="fas fa-user-shield"></i> Admin Panel</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Resources</h3>
+                    <ul class="resource-links">
+                        <li><a href="emergency-contacts.html"><i class="fas fa-phone-alt"></i> Emergency Contacts</a></li>
+                        <li><a href="safety-tips.html"><i class="fas fa-shield-alt"></i> Safety Tips</a></li>
+                        <li><a href="first-aid.html"><i class="fas fa-first-aid"></i> First Aid Guide</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Alert Panel -->
+                <div class="alert-panel">
+                    <div class="panel-header">
+                        <h2><i class="fas fa-exclamation-triangle"></i> Active Alerts</h2>
+                        <div class="panel-controls">
+                            <button id="refreshAlertsBtn"><i class="fas fa-sync-alt"></i></button>
+                            <select id="alertTypeFilter">
+                                <option value="all">All Types</option>
+                                <option value="flood">Flood</option>
+                                <option value="earthquake">Earthquake</option>
+                                <option value="fire">Fire</option>
+                                <option value="landslide">Landslide</option>
+                                <option value="cyclone">Cyclone</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="alerts-container" id="alertsContainer">
+                        <!-- Alert items will be loaded here dynamically -->
+                        <div class="loading">Loading alerts...</div>
+                    </div>
+                </div>
+
+                <!-- Disaster Map -->
+                <div class="map-container">
+                    <h2><i class="fas fa-map-marked-alt"></i> Disaster Map</h2>
+                    <div id="disasterMap" class="disaster-map">
+                        <!-- Map will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Post Feed -->
+                <div class="feed-container">
+                    <div class="feed-header">
+                        <h2><i class="fas fa-stream"></i> Latest Reports</h2>
+                        <div class="feed-controls">
+                            <select id="sortType">
+                                <option value="newest">Newest First</option>
+                                <option value="verified">Verified First</option>
+                                <option value="severity">Highest Severity</option>
+                            </select>
+                            <select id="disasterTypeFilter">
+                                <option value="all">All Types</option>
+                                <option value="flood">Flood</option>
+                                <option value="earthquake">Earthquake</option>
+                                <option value="fire">Fire</option>
+                                <option value="landslide">Landslide</option>
+                                <option value="cyclone">Cyclone</option>
+                            </select>
+                            <select id="locationFilter">
+                                <option value="all">All Locations</option>
+                                <!-- Locations will be dynamically populated -->
+                            </select>
+                        </div>
+                    </div>
+                    <div id="postFeed" class="post-feed">
+                        <!-- Posts will be loaded here dynamically -->
+                        <div class="loading">Loading posts...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar -->
+            <div class="sidebar right-sidebar">
+                <!-- Recent Disasters -->
+                <div class="sidebar-section">
+                    <h3>Recent Disasters</h3>
+                    <div id="recentDisasters" class="recent-disasters">
+                        <!-- Recent disasters will be loaded here -->
+                        <div class="loading">Loading...</div>
+                    </div>
+                </div>
+                
+                <!-- Statistics Section -->
+                <div class="sidebar-section">
+                    <h3>Statistics</h3>
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <div class="stat-label">Reports Today</div>
+                            <div class="stat-value" id="reportsToday">-</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Verified Reports</div>
+                            <div class="stat-value" id="verifiedReports">-</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Active Alerts</div>
+                            <div class="stat-value" id="activeAlerts">-</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Footer Links -->
+                <div class="sidebar-section">
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy.html">Privacy</a></li>
+                        <li><a href="terms.html">Terms</a></li>
+                    </ul>
+                    <div class="copyright">
+                        &copy; 2023 Coast Guardian
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Create Post Modal -->
+    <div class="modal" id="createPostModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Report a Disaster</h2>
+            <form id="createPostForm">
+                <div class="form-group">
+                    <label for="postDisasterType">Disaster Type</label>
+                    <select id="postDisasterType" required>
+                        <option value="" disabled selected>Select type</option>
+                        <option value="flood">Flood</option>
+                        <option value="earthquake">Earthquake</option>
+                        <option value="fire">Fire</option>
+                        <option value="landslide">Landslide</option>
+                        <option value="cyclone">Cyclone</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="postLocation">Location</label>
+                    <input type="text" id="postLocation" placeholder="City, District, State" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="postContent">Description</label>
+                    <textarea id="postContent" placeholder="Describe the disaster situation..." rows="4" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="postMedia">Upload Photos/Videos</label>
+                    <input type="file" id="postMedia" accept="image/*, video/*">
+                    <div id="mediaPreview" class="media-preview"></div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="secondary-button" id="cancelPost">Cancel</button>
+                    <button type="submit" class="primary-button">Submit Report</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/auth-service.js"></script>
+    <script src="js/post-service.js"></script>
+    <script src="js/dark-mode.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>

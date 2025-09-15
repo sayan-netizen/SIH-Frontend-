@@ -1,0 +1,43 @@
+URGENT: EMAIL CONFIGURATION FIX
+=====================================
+
+🚨 Your email is not working because the Gmail App Password is missing!
+
+STEP 1: Get Gmail App Password
+------------------------------
+1. Go to https://myaccount.google.com/
+2. Click "Security" on the left
+3. Enable "2-Step Verification" if not already enabled
+4. Click "App passwords" 
+5. Select "Mail" and "Windows Computer"
+6. Click "Generate" 
+7. Copy the 16-character password (like: abcd efgh ijkl mnop)
+
+STEP 2: Configure the Password
+------------------------------
+Option A - Direct in Code (Quick Fix):
+1. Open app.py
+2. Find line ~27 with: app.config['MAIL_PASSWORD'] = ''
+3. Replace with: app.config['MAIL_PASSWORD'] = 'your-16-char-password'
+4. Remove spaces: 'abcdefghijklmnop'
+
+Option B - Environment Variable:
+1. In PowerShell run:
+   $env:MAIL_PASSWORD = "your-16-char-password"
+
+STEP 3: Test Email
+------------------
+1. Restart Flask app: python app.py
+2. Test contact form or visit: http://127.0.0.1:5000/api/test-email
+
+EXAMPLE:
+--------
+If your app password is: abcd efgh ijkl mnop
+Change line 27 to: app.config['MAIL_PASSWORD'] = 'abcdefghijklmnop'
+
+⚠️  IMPORTANT: 
+- Use App Password, NOT your regular Gmail password
+- Remove all spaces from the password
+- Keep the quotes around the password
+
+✅ Once configured, emails will be delivered to: smartindiahackathon72@gmail.com

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Community Disaster Reporting System</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/dark-mode.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="brand-info">
+                    <h1>Coast Guardian</h1>
+                    <p class="subtitle">Community Disaster Reporting</p>
+                </div>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../reports.html" class="nav-link"><i class="fas fa-list"></i> Reports</a></li>
+                    <li><a href="../live-disasters.html" class="nav-link"><i class="fas fa-broadcast-tower"></i> Live Disasters</a></li>
+                    <li><a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="contact.html" class="nav-link active"><i class="fas fa-phone"></i> Contact</a></li>
+                </ul>
+                
+                <div class="auth-buttons">
+                    <a href="../auth/login.html" class="btn-secondary">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <a href="../auth/register.html" class="btn-primary">
+                        <i class="fas fa-user-plus"></i> Register
+                    </a>
+                </div>
+                
+                <!-- Mobile menu toggle -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <main class="main-content">
+            <section class="contact-section">
+                <div class="section-header">
+                    <h2>Contact Us</h2>
+                    <p class="section-subtitle">Get in touch with our team for support, feedback, or partnerships</p>
+                </div>
+                
+                <div class="contact-content-wrapper">
+                    <div class="contact-info-panel">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Admin Contact</h4>
+                                <p><strong>Admin Email:</strong> <span class="admin-email">smartindiahackathon72@gmail.com</span></p>
+                                <p class="email-note">📧 All contact form messages are sent directly to our admin team</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Emergency Hotlines</h4>
+                                <p><strong>Police Emergency:</strong> 100</p>
+                                <p><strong>Medical Emergency:</strong> 108</p>
+                                <p><strong>Fire Emergency:</strong> 101</p>
+                                <p>Available 24/7 for immediate assistance</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-panel">
+                        <div class="content-card form-card">
+                            <div class="card-header">
+                                <i class="fas fa-paper-plane card-icon"></i>
+                                <h3>Send us a Message</h3>
+                            </div>
+                            <div class="card-content">
+                                <form id="contactForm" class="contact-form">
+                                    <div class="form-group">
+                                        <label for="contactName">Your Name <span class="required">*</span></label>
+                                        <input type="text" id="contactName" name="contactName" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="contactEmail">Your Email <span class="required">*</span></label>
+                                        <input type="email" id="contactEmail" name="contactEmail" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="subject">Subject <span class="required">*</span></label>
+                                        <select id="subject" name="subject" required>
+                                            <option value="">Select a subject</option>
+                                            <option value="support">Technical Support</option>
+                                            <option value="feedback">Feedback</option>
+                                            <option value="partnership">Partnership</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="message">Message <span class="required">*</span></label>
+                                        <textarea id="message" name="message" rows="5" required placeholder="Please describe how we can help you..."></textarea>
+                                    </div>
+                                    
+                                    <div class="form-actions">
+                                        <button type="submit" class="submit-btn">
+                                            <i class="fas fa-paper-plane"></i> Send Message
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="../../js/dark-mode.js"></script>
+    <script src="../../js/navigation.js"></script>
+    <script src="../../js/contact.js"></script>
+</body>
+</html>

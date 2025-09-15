@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Coast Guardian</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/login.css">
+    <link rel="stylesheet" href="../../css/dark-mode.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="brand-info">
+                    <h1>Coast Guardian</h1>
+                    <p class="subtitle">Community Disaster Reporting</p>
+                </div>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../reports.html" class="nav-link"><i class="fas fa-list"></i> Reports</a></li>
+                    <li><a href="../live-disasters.html" class="nav-link"><i class="fas fa-broadcast-tower"></i> Live Disasters</a></li>
+                    <li><a href="../info/about.html" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="../info/contact.html" class="nav-link"><i class="fas fa-phone"></i> Contact</a></li>
+                </ul>
+                
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn-secondary">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <a href="register.html" class="btn-primary active">
+                        <i class="fas fa-user-plus"></i> Register
+                    </a>
+                </div>
+                
+                <!-- Mobile menu toggle -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dark Mode Toggle -->
+    <div class="auth-header">
+        <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+            <div class="theme-toggle-slider"></div>
+            <i class="fas fa-sun theme-toggle-icon sun-icon"></i>
+            <i class="fas fa-moon theme-toggle-icon moon-icon"></i>
+        </button>
+    </div>
+
+    <div class="container">
+        <main class="main-content">
+            <div class="login-container">
+                <!-- Registration Options -->
+                <div class="login-options-container" id="registerOptions">
+                    <div class="login-header">
+                        <h2>Register</h2>
+                        <p class="login-subheader">Create your disaster reporting account</p>
+                    </div>
+                    
+                    <div class="login-options">
+                        <div class="login-option" id="citizenRegisterOption">
+                            <div class="login-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="login-info">
+                                <div class="login-type">Citizen Registration</div>
+                                <div class="login-description">For general citizens to report and verify disasters</div>
+                            </div>
+                            <div class="login-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="login-option" id="officialRegisterOption">
+                            <div class="login-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div class="login-info">
+                                <div class="login-type">Official Registration</div>
+                                <div class="login-description">For government officials and authorities</div>
+                            </div>
+                            <div class="login-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="login-option" id="adminRegisterOption">
+                            <div class="login-icon">
+                                <i class="fas fa-cog"></i>
+                            </div>
+                            <div class="login-info">
+                                <div class="login-type">Admin Registration</div>
+                                <div class="login-description">For system administrators</div>
+                            </div>
+                            <div class="login-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Registration Forms (Initially Hidden) -->
+                <div class="login-form-container hidden" id="registerFormContainer">
+                    <button class="back-btn" id="backBtn">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    
+                    <div class="login-form-header">
+                        <h2 id="registerTypeTitle">Register</h2>
+                    </div>
+                    
+                    <div class="error-message" id="registerError"></div>
+                    
+                    <form id="registerForm" class="login-form">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                            <div class="error-message" id="fullNameError"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                            <div class="error-message" id="emailError"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="password-input-container">
+                                <input type="password" id="password" name="password" required>
+                                <button type="button" class="toggle-password" id="togglePassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="error-message" id="passwordError"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                            <div class="error-message" id="phoneError"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" id="address" name="address" required>
+                            <div class="error-message" id="addressError"></div>
+                        </div>
+                        
+                        <!-- Official-specific fields -->
+                        <div class="form-group official-fields hidden">
+                            <label for="officialId">Official ID</label>
+                            <input type="text" id="officialId" name="officialId">
+                            <div class="error-message" id="officialIdError"></div>
+                        </div>
+                        
+                        <div class="form-group official-fields hidden">
+                            <label for="department">Department</label>
+                            <select id="department" name="department">
+                                <option value="">Select Department</option>
+                                <option value="disaster_management">Disaster Management</option>
+                                <option value="fire_department">Fire Department</option>
+                                <option value="police">Police</option>
+                                <option value="medical_services">Medical Services</option>
+                                <option value="municipal_corporation">Municipal Corporation</option>
+                                <option value="ndrf">NDRF</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div class="error-message" id="departmentError"></div>
+                        </div>
+                        
+                        <!-- Admin-specific fields -->
+                        <div class="form-group admin-fields hidden">
+                            <label for="adminCode">Admin Access Code</label>
+                            <input type="text" id="adminCode" name="adminCode">
+                            <div class="error-message" id="adminCodeError"></div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="primary-button">Register</button>
+                        </div>
+                    </form>
+                    
+                    <div class="auth-links">
+                        <p>Already have an account? <a href="login.html">Login</a></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <span class="divider">|</span>
+                <a href="login.html">Login</a>
+                <span class="divider">|</span>
+                <a href="../info/about.html">About Us</a>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="../../js/auth-service.js"></script>
+    <script src="../../js/register.js"></script>
+    <script src="../../js/dark-mode.js"></script>
+    <script src="../../js/navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Coast Guardian</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/login.css">
+    <link rel="stylesheet" href="../../css/dark-mode.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="brand-info">
+                    <h1>Coast Guardian</h1>
+                    <p class="subtitle">Community Disaster Reporting</p>
+                </div>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../reports.html" class="nav-link"><i class="fas fa-list"></i> Reports</a></li>
+                    <li><a href="../live-disasters.html" class="nav-link"><i class="fas fa-broadcast-tower"></i> Live Disasters</a></li>
+                    <li><a href="../info/about.html" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="../info/contact.html" class="nav-link"><i class="fas fa-phone"></i> Contact</a></li>
+                </ul>
+                
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn-secondary active">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <a href="register.html" class="btn-primary">
+                        <i class="fas fa-user-plus"></i> Register
+                    </a>
+                </div>
+                
+                <!-- Mobile menu toggle -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dark Mode Toggle -->
+    <div class="auth-header">
+        <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+            <div class="theme-toggle-slider"></div>
+            <i class="fas fa-sun theme-toggle-icon sun-icon"></i>
+            <i class="fas fa-moon theme-toggle-icon moon-icon"></i>
+        </button>
+    </div>
+
+    <div class="container">
+        <main class="main-content">
+            <div class="login-container">
+                <!-- Login Options -->
+                <div class="login-options-container" id="loginOptions">
+                    <div class="login-header">
+                        <h2>Login</h2>
+                        <p class="login-subheader">Access your disaster reporting account</p>
+                    </div>
+                    
+                    <div class="login-options">
+                        <div class="login-option" id="citizenLoginOption">
+                            <div class="login-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="login-info">
+                                <div class="login-type">Citizen Login</div>
+                                <div class="login-description">For general citizens to report and verify disasters</div>
+                            </div>
+                            <div class="login-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="login-option" id="officialLoginOption">
+                            <div class="login-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div class="login-info">
+                                <div class="login-type">Official Login</div>
+                                <div class="login-description">For government officials and authorities</div>
+                            </div>
+                            <div class="login-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="login-option" id="adminLoginOption">
+                            <div class="login-icon">
+                                <i class="fas fa-cog"></i>
+                            </div>
+                            <div class="login-info">
+                                <div class="login-type">Admin Login</div>
+                                <div class="login-description">For system administrators</div>
+                            </div>
+                            <div class="login-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Login Forms (Initially Hidden) -->
+                <div class="login-form-container hidden" id="loginFormContainer">
+                    <button class="back-btn" id="backBtn">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    
+                    <div class="login-form-header">
+                        <h2 id="loginTypeTitle">Login</h2>
+                    </div>
+                    
+                    <div class="error-message" id="loginError"></div>
+                    
+                    <form id="loginForm" class="login-form">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                            <div class="error-message" id="emailError"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="password-input-container">
+                                <input type="password" id="password" name="password" required>
+                                <button type="button" class="toggle-password" id="togglePassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="error-message" id="passwordError"></div>
+                        </div>
+                        
+                        <!-- Official-specific fields -->
+                        <div class="form-group official-fields hidden">
+                            <label for="officialId">Official ID</label>
+                            <input type="text" id="officialId" name="officialId">
+                            <div class="error-message" id="officialIdError"></div>
+                        </div>
+                        
+                        <!-- Admin-specific fields -->
+                        <div class="form-group admin-fields hidden">
+                            <label for="adminCode">Admin Access Code</label>
+                            <input type="text" id="adminCode" name="adminCode">
+                            <div class="error-message" id="adminCodeError"></div>
+                        </div>
+                        
+                        <div class="form-group remember-me">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="rememberMe" name="rememberMe">
+                                <span>Remember me</span>
+                            </label>
+                            <a href="forgot-password.html" class="forgot-password">Forgot password?</a>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="primary-button">Login</button>
+                        </div>
+                    </form>
+                    
+                    <div class="auth-links">
+                        <p>Don't have an account? <a href="register.html">Register</a></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <span class="divider">|</span>
+                <a href="register.html">Register</a>
+                <span class="divider">|</span>
+                <a href="../info/about.html">About Us</a>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="../../js/auth-service.js"></script>
+    <script src="../../js/login.js"></script>
+    <script src="../../js/dark-mode.js"></script>
+    <script src="../../js/navigation.js"></script>
+</body>
+</html>
